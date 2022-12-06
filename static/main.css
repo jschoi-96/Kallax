@@ -1,0 +1,327 @@
+/* color palette: https://colorhunt.co/palette/49537174959a98b4aaf1e0ac */
+:root {
+  --darkBlue: #495371;
+  --darkGreen: #74959A;
+  --lightGreen: #98B4AA;
+  --purple: #D885A3;
+  --tan: #F1E0AC; 
+}
+
+/* 
+HOW TO USE COLOR VARIABLES:
+
+element {
+  color: var(--darkBlue);
+}
+*/
+
+/* Edit Chrome scrollbar to match our colors */
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--tan);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--darkGreen);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid var(--tan);  /* creates padding around scroll thumb */
+}
+
+/* add a media query so that at small screen sizes containers take up 100% of the width */
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--darkBlue);
+  /* uncomment following line if we want a gradient navbar */
+  /* background-image: linear-gradient(to right, var(--darkGreen), var(--darkBlue)); */
+  box-shadow: 0 3px 8px 0 var(--lightGreen);
+  margin-bottom: 50px;
+}
+
+#navbar a {
+  color: var(--tan);
+  font-size: 1.75em;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 1px var(--darkGreen);
+}
+
+.nav-li {
+  transition: background-color 100ms ease-out, text-decoration 100ms ease-out;
+}
+
+.nav-li:hover {
+  text-decoration: underline;
+  background-color: var(--darkGreen);
+}
+
+body {
+  background: var(--tan);
+  font-family: 'Noto Serif', serif;
+  color: var(--darkBlue);
+}
+/* Add padding to all pure grids */
+.pure-g > div[class*="pure-u-"] {
+  padding: 1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.bookshelf_widget {
+  margin-left: 50px;
+  margin-bottom: 25px;
+  border-radius: 25px;
+  background: var(--darkBlue);
+  padding: 20px;
+  box-shadow: var(--darkBlue) 0 3px 8px;
+}
+
+/* Temporary hack: https://www.kindacode.com/article/css-make-a-search-field-with-a-magnifying-glass-icon-inside/ */
+.search_bar_field {
+  width: 100%;
+  padding: 10px 35px 10px 15px;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  background: #EEEEEE;
+}
+
+.search_bar_button {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -33px;
+}
+
+.search_bar_button img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+
+#search {
+  font-family: 'Noto Serif', serif;
+  color: var(--darkBlue);
+  background-color: white;
+  padding-left: 3%;
+  font-size: 1.5em;
+  line-height: 2em;
+  border: 2px solid white;
+  box-shadow: var(--darkBlue) 0px 3px 8px;
+  transition: border 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+#search:focus {
+  border: 2px solid var(--purple);
+  box-shadow: var(--purple) 0px 3px 8px
+}
+
+#search-type-form label,
+#search-type-form select {
+  font-family: 'Noto Serif', serif !important;
+  color: var(--darkBlue);
+}
+
+#search-type-form label {
+  vertical-align: middle;
+}
+
+#search-type-form select {
+  padding: 2px;
+  margin-left: 6px;
+  border-radius: 18px;
+  text-align: center;
+  line-height: 2em !important;
+  vertical-align: middle;
+  letter-spacing: 0.04em !important;
+  background-color: white !important;
+  border: 2px solid white;
+  box-shadow: var(--darkBlue) 0px 3px 8px;
+  transition: border 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+#search-type-form select:focus {
+  border: 2px solid var(--purple);
+  box-shadow: var(--purple) 0px 3px 8px
+}
+
+.popup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  color: #333
+}
+
+.popup-container form {
+  font-size: 1.5em;
+  background-color: var(--lightGreen);
+  padding: 20px;
+  border-radius: 25px;
+  border: 1px solid var(--lightGreen);
+  line-height: 1.5em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* nice box shadow examples from https://getcssscan.com/css-box-shadow-examples */
+}
+
+.popup-container form button {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 8px;
+  background-color: var(--darkBlue);
+}
+
+#notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* .cover-image {
+  max-height: 100%;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} */
+
+.book-cover-wrapper {
+  margin-bottom: 50px;
+}
+
+.book-cover-image-standalone {
+  /* border: 1px solid var(--darkBlue); */
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-height: 40vh;
+}
+
+.book-cover-image-bookshelf {
+  /* border: 1px solid var(--darkBlue); */
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-height: 20vh;
+}
+
+.title-author-container h2 {
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.profile-picture {
+  border-radius: 100%;
+  border: 2px solid white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-bottom: 15px;
+}
+
+.bookshelf-name {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 0;
+  line-height: 2em;
+  border-radius: 14px;
+  background-color: var(--lightGreen);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.bookshelf-name a {
+  color: var(--darkBlue);
+  text-decoration: none;
+}
+
+.bookshelf-name a:hover {
+  color:#252e4b
+}
+
+.search-container {
+  background-color: #ecd89a;
+  padding: 20px;
+  border-radius: 35px;
+  margin-bottom: 50px;
+  display: flex;
+  /* align-items: center; */
+}
+
+.book-in-search {
+  display: flex;
+  justify-content: end;
+}
+
+.search-book-list {
+  padding-left: 0;
+}
+
+.shelf-and-add * {
+  font-size: 1em;
+  line-height: 1.3em;
+  border-radius: 5px;
+}
+
+.shelf-and-add select {
+  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+  margin-bottom: 18.72px;
+  padding: 8px 16px;
+  width: 160px;
+}
+
+.shelf-and-add span {
+  font-family: 'Fredoka', sans-serif;
+}
+
+.shelf-and-add button {
+  text-align: center;
+  background-color: white;
+  border: 1px solid black;
+  width: 160px;
+}
+
+.shelf-and-add button:hover {
+  background-color: rgb(243, 232, 232);
+}
+
+.title-and-author {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+#submit, #name {
+  margin-left: 8px;
+  background-color: white;
+  padding: 8px 16px;
+  border: 1px solid black;
+  font-size: 1em;
+  line-height: 1.3em;
+  border-radius: 5px;
+  font-family: 'Fredoka', sans-serif;
+}
+
+#submit:hover {
+  background-color: rgb(243, 232, 232);
+}
+
+.removeButton {
+  background-color: white;
+  padding: 8px 16px;
+  border: 1px solid black;
+  font-size: 1em;
+  line-height: 1.3em;
+  border-radius: 5px;
+  font-family: 'Fredoka', sans-serif;
+}

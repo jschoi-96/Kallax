@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="notFoundContainer">
+  <h1>Ah shoot! There's nothing here except for this cool blob </h1>
+
+  <!-- svg blob from https://blobs.app/ -->
+  <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="35vw" id="blobSvg">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color: rgb(194, 229, 156);"></stop>
+        <stop offset="100%" style="stop-color: rgb(100, 179, 244);"></stop>
+      </linearGradient>
+    </defs>
+    <path id="blob" d="M433,293Q428,336,409,380.5Q390,425,346,451.5Q302,478,257,447.5Q212,417,169.5,410.5Q127,404,113.5,363Q100,322,94.5,286Q89,250,93.5,213.5Q98,177,113,136.5Q128,96,166,71.5Q204,47,252.5,36Q301,25,334.5,64Q368,103,388.5,138Q409,173,423.5,211.5Q438,250,433,293Z" fill="url(#gradient)"></path>
+  </svg>
+</div>
+
+{% endblock %}

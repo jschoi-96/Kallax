@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% from "bookCoverMacro.html" import bookCover with context %}
+{% from "searchMacro.html" import search with context %}
+{% from "bookshelfMacro.html" import bookshelf with context %}
+
+{% block content %}
+    <h1 style="text-align: center"> Browse all Bookshelves </h1>
+
+    <div class="pure-g">
+        {% for shelf in bookshelves %}
+            <div class="pure-u-1 pure-u-md-1-2">
+              {{ bookshelf(shelf) }}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

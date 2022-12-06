@@ -1,0 +1,12 @@
+{% macro bookCover(title, cover_url, view) %}
+<!-- view can be 'standalone' or 'bookshelf' -->
+<!-- we should wrap this in larger components like bookshelf or search results -->
+
+<div class="book-cover-wrapper">
+  <a class="book-cover-link" href="#">
+      <img class="book-cover-image-{{view}}" src="{{cover_url}}" alt="cover for {{title}}">
+  </a>
+</div>
+
+
+{% endmacro %}

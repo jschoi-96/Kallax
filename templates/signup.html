@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="popup-container">
+  <form class="pure-form pure-form-stacked" method="post" action="/signup">
+    <fieldset>
+        <legend>Sign Up for Kallax</legend>
+        <label for="stacked-username">Pick a Username</label>
+        <input name="username" id="stacked-username" placeholder="Username" required maxlength="19" minlength="1"/>
+        {% if error %}
+            <div class="error-msg" style="color: #ed4337">Username already taken!</div>
+        {% endif %}
+        <button type="submit" class="pure-button pure-button-primary">Log in</button>
+    </fieldset>
+  </form>
+</div>
+
+{% endblock %}

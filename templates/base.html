@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kallax</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+    <script src="/static/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/099d01f672.js" crossorigin="anonymous"></script>
+
+
+    <!-- <style>
+    /*
+    When setting the primary font stack, apply it to the Pure grid units along
+    with "html", "button", "input", "select", and "textarea". Pure Grids use
+    specific font stacks to ensure the greatest OS/browser compatibility.
+    */
+    html, button, input, select, textarea,
+    .pure-g [class *= "pure-u"] {
+        /* Set your content font stack here: */
+        /* font-family: Verdana, "Verdana", sans-serif; */
+        font-family: 'Noto Serif', serif;
+    }
+    </style> -->
+   
+    <link rel="stylesheet" href="/static/main.css">
+
+
+</head>
+<body>
+
+    
+    <div id="navbar" class="pure-menu pure-menu-horizontal">
+        <!-- <a href="/" class="pure-menu-heading pure-menu-link"><img src="/static/images/lettersLOGO.png" width="250px"></a> -->
+        <a href="/" class="pure-menu-heading pure-menu-link nav-li">KALLAX</a>
+        <ul class="pure-menu-list">
+            {% if 'id' in session %}
+                <li class="pure-menu-item">
+                    <a href="/profile" class="pure-menu-link nav-li">Profile</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/logout" class="pure-menu-link nav-li">Logout</a>
+                </li>
+            {% else %}
+                <li class="pure-menu-item">
+                    <a href="/login" class="pure-menu-link nav-li">Log In</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

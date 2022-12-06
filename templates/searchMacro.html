@@ -1,0 +1,53 @@
+{% macro search() %}
+
+<div class="pure-g">
+  <div class="pure-u-1-6"></div>
+  <div class="pure-u-2-3">
+      <form action="/find_book_by_title" method="POST" class="search_bar_form" style="display: flex; flex-direction: row;">
+          <input id="search" type="text" placeholder="Search for a book" class="search_bar_field" name="search_query"/>
+          <button type="submit" class="search_bar_button">
+              <img src="static/images/magnifying_glass.png" alt="magnify_glass">
+          </button>
+      </form>
+      <br>
+      <form id="search-type-form" class="pure-form " style="text-align: center">
+          <label for="search_options">Search for </label>
+          <select name="search_options" id="search_options" class="search_options" style="background-color: #EEEEEE">
+              <option value="title">Title</option>
+              <option value="bookshelf">Bookshelf</option>
+          </select>
+      </form>
+  </div>
+</div>
+
+
+    <script type="text/javascript">
+        $(".search_options").change(function(){
+            const selValue = $(this).val();
+            if(selValue === "title") {
+                $(".search_bar_form").attr('action', '/find_book_by_title')
+                $(".search_bar_field").attr('placeholder', 'Search for a book')
+            }
+            else if(selValue === "isbn") {
+                $(".search_bar_form").attr('action', '/find_book_by_isbn')
+                $(".search_bar_field").attr('placeholder', 'Search for a book')
+            }
+            else if(selValue === "olid") {
+                $(".search_bar_form").attr('action', '/find_book_by_olid')
+                $(".search_bar_field").attr('placeholder', 'Search for a book')
+            }
+            else if(selValue === "bookshelf") {
+                $(".search_bar_form").attr('action', '/find_bookshelf')
+                $(".search_bar_field").attr('placeholder', 'Search for a bookshelf')
+            }
+            // TODO Fix this to be a real search
+            else if(selValue === "user") {
+                $(".search_bar_form").attr('action', '/profile')
+                $(".search_bar_form").attr('method', 'GET')
+
+                $(".search_bar_field").attr('placeholder', 'Search for a user')
+            }
+        });
+    </script>
+
+{% endmacro %}

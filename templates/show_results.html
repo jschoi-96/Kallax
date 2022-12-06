@@ -1,0 +1,14 @@
+{% from "bookCoverMacro.html" import bookCover with context %}
+
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- 'standalone' view displays book cover larger than 'bookshelf' view -->
+    {{ bookCover(title, cover_url, 'standalone') }}
+
+    <div>
+        <p><strong>{{ title }}</strong> by {{ author }}</p>
+    </div>
+
+    
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% from "bookCoverMacro.html" import bookCover with context %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <h3>Created by <a href="{{ url_for('get_user', user_id=owner.id) }}">{{ owner.username }}</a></h3>
+    {% if owner.user_id == session["id"] %}
+        <form action="/delete_bookshelf" method="post">
+            <button class="pure-button" id="submit" name="id" value="{{ id }}"><i class="fa fa-ban" style="margin-left: 0"></i>  Delete Bookshelf</button>
+        </form>
+        <br>
+    {% endif %}
+    {% for book in books %}
+        <div class="pure-g" id="{{ book.id }}">
+            {{ bookCover(book.title , "https://covers.openlibrary.org/b/id/" + book.cover_image_link|string + "-M.jpg" ,'bookshelf' ) }}
+            <div class="pure-u-2-3 title-author-container">
+                <h2>{{ book.title }}</h2>
+                <h3>by {{ book.author }}</h3>
+                {% if owner.user_id == session["id"] %}
+                    <button class="pure-button removeButton" onclick="removeFromShelf({{ book.id }})">
+                        <i class="fa fa-minus" style="margin-left: 0"></i><span>  Remove from Shelf</span>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+    <script>
+        function removeFromShelf(book_id) {
+            $.ajax({
+                url: "{{url_for('remove_book_from_bookshelf')}}",
+                data: {
+                    bookshelf_id: {{ id }},
+                    book_id: book_id,
+                },
+                type:'POST',
+                beforeSend: function() {
+                     $("#".concat(book_id)).find("i").removeClass("fa-minus")
+                     $("#".concat(book_id)).find("i").addClass("fa-cog")
+                     $("#".concat(book_id)).find("i").addClass("fa-spin")
+                }
+          }).done(function() {
+              $("#".concat(book_id)).remove()
+            })
+        }
+    </script>
+{% endblock %}

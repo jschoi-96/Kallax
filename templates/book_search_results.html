@@ -1,0 +1,78 @@
+{% from "bookCoverMacro.html" import bookCover with context %}
+{% from "searchMacro.html" import search with context %}
+
+{% extends "base.html" %}
+{% block content %}
+
+    <br>
+
+    {{ search() }}
+
+    <div class="pure-g">
+
+   
+    <div class="pure-u-1-6"></div>
+    </div>
+
+    <h1 style="text-align: center">Search Results</h1>
+
+    <ul class="search-book-list">
+    {% for result in results %}
+        <div class="pure-g search-container">
+            <div class="pure-u-1-2 book-in-search">
+                {{ bookCover(result['title'] , "https://covers.openlibrary.org/b/id/" + result['cover_id']|string + "-L.jpg" ,'standalone' ) }}
+            </div>
+            <div class="pure-u-1-2">
+                <div class="title-and-author">
+                    <h2>{{ result['title'] }}</h2>
+                    <h3>by {{ result['author'] }}</h3>
+                </div>
+
+            {% if 'id' in session %}
+                <div class="shelf-and-add">
+                    <select id="select-{{ result.work_id }}" class="pure-input">
+                    {% for shelf in shelves %}
+                        <option value="{{ shelf.id }}">{{  shelf.title }}</option>
+                    {% endfor %}
+                    </select>
+                    <br>
+                    <button class="pure-button" onclick="addToShelf('{{result.work_id}}', '{{ result.isbn}}')">
+                        <i id="i-{{ result.work_id }}" class="fa fa-plus" style="margin-left: 0"></i> <span id="span-{{ result.work_id }}">  Add to Shelf</span>
+                    </button>
+                </div>
+                
+            {% else %}
+                <h3>Sign in to add to bookshelf!</h3>
+            {% endif %}
+            </div>
+        </div>
+        <!-- <hr style="border-top: 8px solid var(--darkGreen); border-radius: 5px"> -->
+    {% endfor %}
+    </ul>
+
+    <script>
+    // TODO Make search bar work for all types dynamically like on homepage
+        function addToShelf(work_id, book_isbn) {
+            const bookshelf_id = $('#select-'.concat(work_id)).val()
+            $.ajax({
+                url: "{{url_for('add_book_to_bookshelf')}}",
+                data: {
+                    bookshelf_id: bookshelf_id,
+                    isbn: book_isbn,
+                },
+                type:'POST',
+                beforeSend: function() {
+                     $("#i-".concat(work_id)).removeClass("fa-plus")
+                     $("#i-".concat(work_id)).addClass("fa-cog")
+                     $("#i-".concat(work_id)).addClass("fa-spin")
+                }
+          }).done(function() {
+                $("#i-".concat(work_id)).removeClass("fa-cog")
+                $("#i-".concat(work_id)).removeClass("fa-spin")
+                $("#span-".concat(work_id)).text("Added!")
+            })
+        }
+
+    </script>
+
+{% endblock %}
